@@ -158,7 +158,7 @@ void processData(const char ch, const string& word,
             update incorrectChars: call updateEnteredChars() function
     ***/
     if (word.find(ch) != -1) {
-        updateSecretWord(scretWord, ch, word);
+        updateSecretWord(secretWord, ch, word);
         updateEnteredChars(ch, correctChars);
     }
     else {
