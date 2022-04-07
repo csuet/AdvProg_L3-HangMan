@@ -82,7 +82,7 @@ string generateHiddenCharacters(string answerWord){
     // TODO: Based on answerWord's length, generate hidden characters in form of "---"
     string secretWord;
     for(unsigned i = 0; i < answerWord.size(); i++){
-        secretWord += '-';
+        secretWord.push_back('-');
     }
     return secretWord;
 }
@@ -105,8 +105,8 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
 {
     // TODO: Update the secret word if the character ch is in the answer word.
     for(unsigned i = 0 ; i < secretWord.size(); i++){
-        if(isCharInWord(ch, word))
-        secretWord[i] = ch;
+        if(ch == word[i])
+            secretWord[i] = ch;
     }
 }
 
