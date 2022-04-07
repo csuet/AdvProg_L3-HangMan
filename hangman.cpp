@@ -111,7 +111,7 @@ char getInputCharacter() {
 void updateSecretWord(string& secretWord, const char ch, const string& word)
 {
     // TODO: Update the secret word if the character ch is in the answer word.
-    for (int i = word.length() - 1; i >= 0; i--) {
+    for (int i = 0; i < word.length(); i++) {
         if (word[i] == ch) {
             secretWord[i] = ch;
         }
@@ -127,7 +127,7 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
 ***/
 void updateEnteredChars(const char ch, string& chars){
     // TODO: append the character ch is in end of the text chars
-    chars += ch + " ";
+    chars = chars + ch + " ";
 }
 
 /***
@@ -138,7 +138,7 @@ void updateEnteredChars(const char ch, string& chars){
 ***/
 void updateIncorrectGuess(int& incorrectGuess){
     // TODO: increase the value of incorrectGuess by 1
-    incorrectGuess++;
+    incorrectGuess += 1;
 }
 
 /***
