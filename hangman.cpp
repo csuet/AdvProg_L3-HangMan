@@ -57,6 +57,7 @@ bool isCharInWord(const char ch, const string& word)
         } else {
             return false;
             }
+    }
 }
 
 /***
