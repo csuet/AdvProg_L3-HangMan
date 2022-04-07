@@ -69,14 +69,7 @@ string chooseWordFromList(const vector<string>& wordList, int index)
 {
     // TODO: Return a lowercase word in the index position of the vector wordList.
     string answer;
-    std::stringstream ss;
-    ss << wordList[index];
-    while (ss >> answer)
-    {
-        if(islower(answer[0]))
-            break;
-    }
-    
+    answer = wordList[index];
 
     return answer;
 }
