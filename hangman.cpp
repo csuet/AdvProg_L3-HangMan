@@ -53,7 +53,9 @@ bool isCharInWord(const char ch, const string& word)
 {
     // TODO: return true if ch is in word else return false
 
-    return (word.find_first_of(ch) != string::npos);
+    for (int i = 0; i < word.length(); i++)
+        if (ch == word[i]) return true;
+    return false;
 }
 
 /***
@@ -67,11 +69,8 @@ string chooseWordFromList(const vector<string>& wordList, int index)
 {
     // TODO: Return a lowercase word in the index position of the vector wordList.
     string answer;
-    answer = wordList[index];
-    for (int i = 0; i < answer.length(); i++)
-    {
-        answer[i] = towlower(answer[i]);
-    }
+    for(int i = 0; i < wordList[index].length(); i++)
+        answer.push_back(tolower(wordList[index][i]));
 
     return answer;
 }
@@ -88,7 +87,7 @@ string generateHiddenCharacters(string answerWord) {
     int x = answerWord.length();
     for (int i = 0; i < x; i++)
     {
-        secretWord += '-';
+        secretWord.push_back('-');
     }
 
     return secretWord;
