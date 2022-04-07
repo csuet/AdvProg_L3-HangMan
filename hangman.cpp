@@ -70,7 +70,7 @@ bool isCharInWord(const char ch, const string& word)
 string chooseWordFromList(const vector<string>& wordList, int index) 
 {
     // TODO: Return a lowercase word in the index position of the vector wordList.
-    string answer = wordlist[index];
+    string answer = wordList[index];
     for (int i = 0; i < answer.size(); i++) {
         answer[i] = tolower(answer[i]);
     }
@@ -108,8 +108,10 @@ char getInputCharacter() {
 void updateSecretWord(string& secretWord, const char ch, const string& word)
 {
     // TODO: Update the secret word if the character ch is in the answer word.
-    if (word[i] == ch) {
-        secretWord[i] = ch;
+    for (int i = 0; i < secretWord.size(); i++) {
+        if (word[i] == ch) {
+            secretword[i] = ch;
+        }
     }
 }
 
