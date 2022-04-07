@@ -16,10 +16,10 @@ using std::cin;
 ***/
 int generateRandomNumber(const int min, const int max)
 {
-    int randomNum=rand()%(max-min)+min;
+    stand(time(NULL));
+    return min + rand() % (max-min+1);
 
     // TODO: Return a random integer number between min and max
-    return randomNum;
 }
 
 vector<string> readWordListFromFile(const string& filePath)
