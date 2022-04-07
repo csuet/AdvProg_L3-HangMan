@@ -89,7 +89,6 @@ string generateHiddenCharacters(string answerWord){
     string secretWord = answerWord;
     for (int i = 0; i < secretWord.length(); i++)
     {
-        secretWord[i] = '_';
         secretWord[i] = '-';
     }
     return secretWord;
@@ -167,7 +166,7 @@ void processData(const char ch, const string& word,
             update incorrectChars: call updateEnteredChars() function
     ***/
     for (int i = 0; i < word.length(); i++){
-        if(isCharInWord(ch,word)){
+        if(isCharInWord(ch,word) == true){
             updateSecretWord(secretWord, ch, word);
             updateEnteredChars(ch,correctChars);
         }
