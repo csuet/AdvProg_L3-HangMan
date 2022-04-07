@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time.h>
 #include "hangman.h"
 
 using std::string;
@@ -16,7 +17,7 @@ using std::cin;
 ***/
 int generateRandomNumber(const int min, const int max)
 {
-    stand(time(NULL));
+    srand(time(NULL));
     return min + rand() % (max-min+1);
 
     // TODO: Return a random integer number between min and max
