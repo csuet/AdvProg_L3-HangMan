@@ -51,10 +51,16 @@ vector<string> readWordListFromFile(const string& filePath)
 bool isCharInWord(const char ch, const string& word)
 {
     // TODO: return true if ch is in word else return false
-    for (int i = 0; i < word.length(); i++){
-        if (ch == word[i]) return true;
+    bool check = false;
+    for (int i = 0; i < word.length(); i++)
+    {
+        if (word[i] == ch) 
+        {
+            check = true;
+            break;
+        }
     }
-    return false;
+    return check;
 }
 
 /***
@@ -67,10 +73,8 @@ bool isCharInWord(const char ch, const string& word)
 string chooseWordFromList(const vector<string>& wordList, int index) 
 {
     // TODO: Return a lowercase word in the index position of the vector wordList.
-    string answer;
-    for (int i = 0; i < wordList[index].length(); i++){
-        answer[i] = tolower(wordList[index][i]);
-    }
+    string answer = wordList[index-1];
+
     return answer;
 }
 
@@ -82,8 +86,12 @@ string chooseWordFromList(const vector<string>& wordList, int index)
 ***/
 string generateHiddenCharacters(string answerWord){
     // TODO: Based on answerWord's length, generate hidden characters in form of "---"
-    string secretWord;
-    answerWord = string(secretWord.length(), '-');
+    string secretWord = answerWord;
+    for (int i = 0; i < secretWord.length(); i++)
+    {
+        secretWord[i] = '_';
+        secretWord[i] = '-';
+    }
     return secretWord;
 }
 
