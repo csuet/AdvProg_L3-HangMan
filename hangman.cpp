@@ -102,9 +102,11 @@ char getInputCharacter() {
 ***/
 void updateSecretWord(string& secretWord, const char ch, const string& word)
 {
-    for (int i=0; i<word.size(); i++){
-        if (isCharInWord(ch,word)) {
-            secretWord[i]=word[i];
+    if (isCharInWord(ch,word)){
+        for (int i=0; i<word.size(); i++){
+            if (word[i]==ch){
+                secretWord[i]=ch;
+            }
         }
     }
 }
