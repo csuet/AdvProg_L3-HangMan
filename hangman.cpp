@@ -119,7 +119,7 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
         void
 ***/
 void updateEnteredChars(const char ch, string& chars){
-    chars+=ch;
+    chars+=ch+' ';
 }
 
 /***
