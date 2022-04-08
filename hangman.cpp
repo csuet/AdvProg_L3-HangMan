@@ -75,7 +75,7 @@ string chooseWordFromList(const vector<string>& wordList, int index)
     string answer;
     answer = wordList.at(index);
     for (int i = 0; i < answer.length(); i++){
-        if (answer[i] >= 'a' && answer[i] <= 'z'){
+        if (answer[i] >= 'A' && answer[i] <= 'Z'){
             answer[i] = answer[i] + 32;
         }
     }
@@ -130,7 +130,7 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
 ***/
 void updateEnteredChars(const char ch, string& chars){
     // TODO: append the character ch is in end of the text chars
-    chars = chars + ch;
+    chars = chars + ch + ' ';
 }
 
 /***
