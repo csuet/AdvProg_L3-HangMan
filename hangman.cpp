@@ -83,8 +83,7 @@ string generateHiddenCharacters(string answerWord){
     // TODO: Based on answerWord's length, generate hidden characters in form of "---"
     string secretWord = "";
     for ( int i = 0; i < answerWord.length(); ++i ) {
-        if ( i < answerWord.length() - 1 ) answerWord = answerWord + "_ ";
-        else answerWord = answerWord + '_';
+        answerWord = answerWord + "-";
     }
     return secretWord;
 }
@@ -108,7 +107,7 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
     // TODO: Update the secret word if the character ch is in the answer word.
     for ( int i = 0; i < word.length(); ++i ) {
         if ( ch == word[i] ) {
-            secretWord[i * 2] = ch;
+            secretWord[i] = ch;
         }
     }
 }
@@ -160,13 +159,13 @@ void processData(const char ch, const string& word,
             update incorrectGuess: call updateIncorrectGuess() function
             update incorrectChars: call updateEnteredChars() function
     ***/
-   if ( isCharInWord(ch, word) ) {
-       updateSecretWord(secretWord, ch, word);
-       updateEnteredChars(ch, correctChars);
-   }
-   else {
-       updateIncorrectGuess(incorrectGuess);
-       updateEnteredChars(ch, incorrectChars);
-   }
+    if ( isCharInWord(ch, word) ) {
+        updateSecretWord(secretWord, ch, word);
+        updateEnteredChars(ch, correctChars);
+    }
+    else {
+        updateIncorrectGuess(incorrectGuess);
+        updateEnteredChars(ch, incorrectChars);
+    }
 }
 
