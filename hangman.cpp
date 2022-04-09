@@ -72,7 +72,7 @@ string chooseWordFromList(const vector<string>& wordList, int index)
     string answer;
     string tmp = wordList[index];
     for(int i = 0; i < tmp.length(); i++){
-        answer = putchar(int(tmp[i]) + 32);
+        answer[i] = putchar(int(tmp[i]) + 32);
     }
     return answer;
 }
