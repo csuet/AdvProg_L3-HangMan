@@ -88,7 +88,7 @@ string generateHiddenCharacters(string answerWord){
 
 
     string secretWord;
-    secretWord = std::string(answer.size(), '-');
+    secretWord = std::string(answerWord.size(), '-');
 
     return secretWord;
 }
