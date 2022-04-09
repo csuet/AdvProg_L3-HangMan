@@ -17,7 +17,7 @@ using std::cin;
 int generateRandomNumber(const int min, const int max)
 {
     // TODO: Return a random integer number between min and max
-    int cc = rand() % max + min;
+    int cc = rand() % (max - min + 1) + min;
     return cc;
 }
 
@@ -52,10 +52,10 @@ vector<string> readWordListFromFile(const string& filePath)
 bool isCharInWord(const char ch, const string& word)
 {
     // TODO: return true if ch is in word else return false
-    bool check = 0;
+    bool check = false;
     for(int i = 0; i < word.length(); i++)
     {
-        if(ch == word[i]) check = 1;
+        if(ch == word[i]) check = true;
     }
     return check;
 }
