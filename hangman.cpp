@@ -70,9 +70,10 @@ string chooseWordFromList(const vector<string>& wordList, int index)
 {
     // TODO: Return a lowercase word in the index position of the vector wordList.
     string answer;
-    string tmp = wordList[index];
-    for(int i = 0; i < tmp.length(); i++){
-        answer[i] = putchar(int(tmp[i]) + 32);
+
+    string answer = wordList[index];
+    for (int i = 0; i < answer.size(); i++) {
+        answer[i] = tolower(answer[i]);
     }
     return answer;
 }
@@ -86,7 +87,12 @@ string chooseWordFromList(const vector<string>& wordList, int index)
 string generateHiddenCharacters(string answerWord){
     // TODO: Based on answerWord's length, generate hidden characters in form of "---"
     string secretWord;
-    secretWord = string(answerWord.length(), '-');
+
+    string secretWord = "";
+    for (int i = 0; i < answerWord.size(); i++) {
+        secretWord += '-';
+    }
+
     return secretWord;
 }
 
@@ -106,10 +112,8 @@ char getInputCharacter() {
 void updateSecretWord(string& secretWord, const char ch, const string& word)
 {
     // TODO: Update the secret word if the character ch is in the answer word.
-    for(int i= word.length() - 1; i >= 0; i--) {
-        if(ch == word[i]) 
-            secretWord[i] = ch;
-
+    for (int i = 0; i < word.size(); i++) {
+        if (ch == word[i])secretWord[i] = ch;
     }
 }
 
@@ -122,7 +126,8 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
 ***/
 void updateEnteredChars(const char ch, string& chars){
     // TODO: append the character ch is in end of the text chars
-    chars = chars + ch;
+    chars += ch;
+    chars += ' ';
 }
 
 /***
@@ -160,8 +165,8 @@ void processData(const char ch, const string& word,
             update incorrectGuess: call updateIncorrectGuess() function
             update incorrectChars: call updateEnteredChars() function
     ***/
-    for(int i = 0; i < word.length(); i++) {
-       if(word[i] == ch) {
+   
+       if( isCharInWord(ch,word) ) {
            updateSecretWord(secretWord, ch, word);
            updateEnteredChars(ch, correctChars);
        }
@@ -169,6 +174,6 @@ void processData(const char ch, const string& word,
            updateIncorrectGuess(incorrectGuess);
            updateEnteredChars(ch, incorrectChars);
        }
-   }
+   
 }
 
