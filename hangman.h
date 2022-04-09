@@ -6,7 +6,8 @@
 #include <vector>
 #include <stdexcept>
 #include <algorithm>
-
+#include<ctime>
+#include<stdlib.h>
 
 using std::string;
 using std::vector;
