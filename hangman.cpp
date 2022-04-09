@@ -70,10 +70,9 @@ string chooseWordFromList(const vector<string>& wordList, int index)
 {
     // TODO: Return a lowercase word in the index position of the vector wordList.
     string answer;
-    string tmp;
-    tmp = (wordList[index]);
-    for(int i = 0; i < answer.length(); i++) {
-        answer[i] = putchar(tolower(tmp[i]));
+    string tmp = wordList[index];
+    for(int i = 0; i < tmp.length(); i++){
+        answer = putchar(int(tmp[i]) + 32);
     }
     return answer;
 }
@@ -94,9 +93,8 @@ string generateHiddenCharacters(string answerWord){
 char getInputCharacter() {
     char ch;
     cin >> ch;
-    return putchar(tolower(ch)); 
+    return tolower(ch); 
 }
-
 /***
     Args:
         secretWord (string): secret word in hidden form
