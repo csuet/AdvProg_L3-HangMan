@@ -17,8 +17,8 @@ using std::cin;
 int generateRandomNumber(const int min, const int max)
 {
     // TODO: Return a random integer number between min and max
-    stand(time(NULL));
-    return min + rand() % (max-min+1);
+    srand(time(NULL));
+    return rand() % (max - min + 1) + min;
 }
 
 vector<string> readWordListFromFile(const string& filePath)
@@ -72,13 +72,12 @@ bool isCharInWord(const char ch, const string& word)
 string chooseWordFromList(const vector<string>& wordList, int index) 
 {
     // TODO: Return a lowercase word in the index position of the vector wordList.
-    string answer;
-    string tmp = wordList[index];
-    for (int i = 0 ; i < wordList[index].size(); i++)
+    string answer = wordList[index];
+    
+    for (int i = 0 ; i < answer.size(); i++)
     {
-        tmp[i] = tolower(tmp[i]);
+        answer[i] = tolower(answer[i]);
     }
-    answer = tmp;
     return answer;
 }
 
@@ -168,7 +167,7 @@ void processData(const char ch, const string& word,
             update incorrectGuess: call updateIncorrectGuess() function
             update incorrectChars: call updateEnteredChars() function
     ***/
-   if (isCharInWord(ch, word))
+   if (isCharInWord(ch, word) == true)
    {
        updateSecretWord(secretWord, ch, word);
        updateEnteredChars(ch, correctChars);
