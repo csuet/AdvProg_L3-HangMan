@@ -94,7 +94,7 @@ string generateHiddenCharacters(string answerWord){
 char getInputCharacter() {
     char ch;
     cin >> ch;
-    return tolower(ch); 
+    return putchar(tolower(ch)); 
 }
 
 /***
