@@ -135,7 +135,7 @@ for(int i=0;i<word.length();i++)
 ***/
 void updateEnteredChars(const char ch, string& chars){
     // TODO: append the character ch is in end of the text chars
-    string c = "a";
+    string c = "a ";
     c[0]=ch;
     chars+=c;
 }
