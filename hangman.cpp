@@ -112,7 +112,7 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
     // TODO: Update the secret word if the character ch is in the answer word.
     int i = 0;
     while(word.find(ch, i) != string::npos){
-        secretWord[word.find(ch)] = ch;
+        secretWord[word.find(ch, i)] = ch;
         i = word.find(ch, i) + 1;
     }
 }
