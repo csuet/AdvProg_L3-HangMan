@@ -38,8 +38,8 @@ vector<string> readWordListFromFile(const string& filePath)
 
 bool isCharInWord(const char ch, const string& word)
 {
-    for(int i=0; i<word.length(); i++) {
-      if(ch==word[i]) {
+    for(int i=0; i<word.size(); i++) {
+      if(ch == word[i]) {
         return true;
       }
     }
@@ -76,7 +76,7 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
 }
 
 void updateEnteredChars(const char ch, string& chars){
-    chars += ch;
+    chars = chars + ch + " ";
 }
 
 void updateIncorrectGuess(int& incorrectGuess){
@@ -89,13 +89,12 @@ void processData(const char ch, const string& word,
                 string& correctChars, 
                 int& incorrectGuess, string& incorrectChars)
 {
-    if(isCharInWord(ch,word)){
+    if (isCharInWord(ch , word)) {
         updateSecretWord(secretWord,ch,word);
-        updateEnteredChars(ch, correctChars);
-    }
-    else{
+        updateEnteredChars(ch,correctChars);
+    } else{
         updateIncorrectGuess(incorrectGuess);
-        updateEnteredChars(ch, incorrectChars);
+        updateEnteredChars(ch,incorrectChars);
     }
 }
 
