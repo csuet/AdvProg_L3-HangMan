@@ -131,7 +131,7 @@ void updateEnteredChars(const char ch, string& chars){
     }
     else 
     {
-        chars = chars + " " + ch;
+        chars = chars + ch + " ";
     }
 }
 
