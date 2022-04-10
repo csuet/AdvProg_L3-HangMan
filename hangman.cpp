@@ -110,8 +110,10 @@ char getInputCharacter() {
 void updateSecretWord(string& secretWord, const char ch, const string& word)
 {
     // TODO: Update the secret word if the character ch is in the answer word.
-    while(int(word.find(ch)) != string::npos){
+    int i = 0;
+    while(word.find(ch, i) != string::npos){
         secretWord[word.find(ch)] = ch;
+        i = word.find(ch, i) + 1;
     }
 }
 
