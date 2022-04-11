@@ -1,150 +1,108 @@
 #include <iostream>
-#include "hangman.h"
+#include <string>
+#include <fstream>
+#include <cstdlib>
+#include <time.h>
+#include <windows.h>
 
-using std::string;
-using std::vector;
-using std::ifstream;
-using std::domain_error;
-using std::cin;
+using namespace std;
 
-/***
-    Args:
-        min (int): left margin of a range
-        max (int): right margin of a range
-    Returns:
-        number (int) : random number in range [min; max]
-***/
-int generateRandomNumber(const int min, const int max)
-{
-    // TODO: Return a random integer number between min and max
-    return 1;
+int misTake=-1;
+
+string newWord();
+
+void drawHangman(int misTake);
+
+void guessPlay(string secretWord);
+
+void Cls();
+
+string updateWord(char charWord , string secretWord , string guessWord);
+
+bool checkGuess(string secretWord , string guessWord);
+
+int randomNumber(){
+
+	int r;
+    srand((int)time(0));
+
+        r = rand() % 7 +1;
+        return r;
+
 }
 
-vector<string> readWordListFromFile(const string& filePath)
+int main(int argc, char const *argv[])
 {
-    vector<string> wordList;
-    string word;
-    ifstream wordFile (filePath);
-    if (!wordFile.is_open()) {
-        throw domain_error("Unable to open file");
+	string guessWord = newWord();
+	string secretWord = guessWord;
+	int dLength = secretWord.length();
+	for (int i = 0; i < dLength; ++i)
+	{
+		secretWord[i]='-';
+	}
+
+	drawHangman(misTake);
+	cout<<"\n \n";
+	guessPlay(secretWord);
+	while(1){
+	char charWord;
+	cout<<'\n';
+	cin>>charWord;
+    Cls();
+	secretWord = updateWord(charWord , secretWord , guessWord);
+    drawHangman(misTake);
+    cout<<"\n \n";
+    guessPlay(secretWord);
+    if(misTake==6){cout<<"\n LOSS..."; break;}
+    if(checkGuess(secretWord,guessWord)){cout<<"\n WIN..."; break;}
     }
-
-    //while ( getline (wordFile, word) ){  // Thong thuong doc tung line. 
-                                           // Chuong trinh nay cung chay.
-    while (wordFile >> word) {  // Nhung voi chuong trinh nay, doc tung word cung duoc
-                                // Tuc ca 2 cach doc deu chay.
-        wordList.push_back(word);
-        //cout << word << '\n';
-    }
-    wordFile.close();
-
-    return wordList;
+	return 0;
 }
 
-/***
-    Args:
-        ch (char): A character
-        word (string): a word
-    Returns:
-        result (bool) : the character ch is in the word or not.
-***/
-bool isCharInWord(const char ch, const string& word)
-{
-    // TODO: return true if ch is in word else return false
-    return true;
+
+
+void guessPlay(string secretWord){
+     cout<<secretWord;
 }
 
-/***
-    Args:
-        wordList (vector<string>): A list of words
-        index (int): an integer number
-    Returns:
-        answer (string) : the lowercase word is in the position index of wordList
-***/
-string chooseWordFromList(const vector<string>& wordList, int index) 
-{
-    // TODO: Return a lowercase word in the index position of the vector wordList.
-    string answer;
-
-    return answer;
+void Cls(){
+    system(cls);
 }
 
-/***
-    Args:
-        answerWord (string): a word that player needs to guess
-    Returns:
-        secretWord (string): answerWord in hidden form (form of ---)
-***/
-string generateHiddenCharacters(string answerWord){
-    // TODO: Based on answerWord's length, generate hidden characters in form of "---"
-    string secretWord;
-
-    return secretWord;
+string updateWord(char charWord , string secretWord , string guessWord){
+	int dLength = guessWord.length();
+    int check = 0;
+	for (int i = 0; i < dLength; ++i)
+	{
+		if(guessWord[i]==charWord){
+			secretWord[i] = charWord;
+			check++;
+		}
+	}
+	if(check==0) misTake++;
+	return secretWord;
 }
 
-char getInputCharacter() {
-    char ch;
-    cin >> ch;
-    return tolower(ch); 
+string newWord(){
+	string word;
+	ifstream file ("dictionary.txt");
+	if(file.is_open()){
+		for (int i = 1; i <=randomNumber() ; i++)
+		{
+			getline(file,word);
+
+		}
+		file.close();
+	}
+	word.erase(word.begin()+0);
+	return word;
 }
 
-/***
-    Args:
-        secretWord (string): secret word in hidden form
-        ch (char): a charater
-        word (string): the answer word
-    Returns:
-        void
-***/
-void updateSecretWord(string& secretWord, const char ch, const string& word)
-{
-    // TODO: Update the secret word if the character ch is in the answer word.
+bool checkGuess(string secretWord , string guessWord){
+	int dLength = guessWord.length();
+	for (int i = 0; i < dLength; ++i)
+	{
+		if(secretWord[i]!=guessWord[i]) return false;
+	}
+	return true;
 }
-
-/***
-    Args:
-        ch (char): a character
-        chars (string): an array of characters
-    Returns:
-        void
-***/
-void updateEnteredChars(const char ch, string& chars){
-    // TODO: append the character ch is in end of the text chars
-}
-
-/***
-    Args:
-        incorrectGuess (int): a number that store the number of player's wrong guess
-    Returns:
-        void
-***/
-void updateIncorrectGuess(int& incorrectGuess){
-    // TODO: increase the value of incorrectGuess by 1
-}
-
-/***
-    Args:
-        ch (char): a character that player enter to console
-        word (string): answer word that play needs to guess
-        secretWord (string): answer word in hidden form
-        correctChars (string): a string that stores correct inputs of player
-        incorrectGuess (int): a number that stores the number of player's wrong guess
-        incorrectChars (string): a string that stores incorrect inputs of player
-    Returns:
-        void
-***/
-void processData(const char ch, const string& word, 
-                string& secretWord, 
-                string& correctChars, 
-                int& incorrectGuess, string& incorrectChars)
-{
-    /*** TODO
-        If ch in word:
-            update secretWord: call updateSecretWord() function
-            update correctChars: call updateEnteredChars() function
-        else:
-            update incorrectGuess: call updateIncorrectGuess() function
-            update incorrectChars: call updateEnteredChars() function
-    ***/
-}
-
