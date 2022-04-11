@@ -53,7 +53,10 @@ bool isCharInWord(const char ch, const string& word)
     // TODO: return true if ch is in word else return false
     for (int i = 0; i < word.size(); i++)
     {
-        if (ch == word[i]) return true;
+        if (ch == word[i])
+        {
+            return true;
+        }
     }
     return false;
 }
@@ -86,8 +89,9 @@ string chooseWordFromList(const vector<string>& wordList, int index)
 string generateHiddenCharacters(string answerWord){
     // TODO: Based on answerWord's length, generate hidden characters in form of "---"
     string secretWord;
-    for (int i = 0; i < answerWord.size(); i++) {
-        secretWord.append("-");
+    for (int i = 0; i < answerWord.size(); i++)
+    {
+        secretWord+="-";
     }
     return secretWord;
 }
