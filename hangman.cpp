@@ -14,9 +14,9 @@ using std::cin;
     Returns:
         number (int) : random number in range [min; max]
 ***/
-int generateRandomNumber(const int min, const int max)
+int generateRandomNumber(const int mind, const int maxd)
 {
-    return min + rand % (max-min);
+    return mind + rand() % (maxd-mind);
 }
 
 vector<string> readWordListFromFile(const string& filePath)
@@ -166,5 +166,5 @@ void processData(const char ch, const string& word,
             update incorrectGuess: call updateIncorrectGuess() function
             update incorrectChars: call updateEnteredChars() function
     ***/
-},,
+}
 
