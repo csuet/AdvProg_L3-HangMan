@@ -77,7 +77,7 @@ string chooseWordFromList(const vector<string>& wordList, int index)
     {
         if ('A' <= answer[i] && answer[i] <= 'Z')
         {
-            answer[i] = answer[i] + ('Z' - 'A');
+            answer[i] = tolower(answer[i]);
         }
     }
     return answer;
