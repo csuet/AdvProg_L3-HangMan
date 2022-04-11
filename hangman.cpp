@@ -159,7 +159,7 @@ void processData(const char ch, const string& word,
             update incorrectGuess: call updateIncorrectGuess() function
             update incorrectChars: call updateEnteredChars() function
     ***/
-   size_ t found = word.find(ch);
+   size_t found = word.find(ch);
    if (found != string::npos) {
        updateSecretWord(secretWord, ch, word);
        updateEnteredChars(ch, correctChars);
