@@ -18,7 +18,7 @@ int generateRandomNumber(const int min, const int max)
 {
     // TODO: Return a random integer number between min and max
     srand(time(0));
-    return rand() % (max-min+1)+min ;
+    return (rand() % (max-min+1)+min) ;
 }
 
 vector<string> readWordListFromFile(const string& filePath)
@@ -72,7 +72,6 @@ string chooseWordFromList(const vector<string>& wordList, int index)
     for(int i=0;i<answer.size();i++){
         answer[i]=tolower(answer[i]);
     }
-
     return answer;
 }
 
@@ -84,8 +83,8 @@ string chooseWordFromList(const vector<string>& wordList, int index)
 ***/
 string generateHiddenCharacters(string answerWord){
     // TODO: Based on answerWord's length, generate hidden characters in form of "---"
-    string secretWord=string(answerWord.size(),'-');
-
+    int len=answerWord.size();
+    string secretWord(len, '-');
     return secretWord;
 }
 
