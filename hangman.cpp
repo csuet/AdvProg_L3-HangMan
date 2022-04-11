@@ -1,12 +1,7 @@
 #include <iostream>
 #include "hangman.h"
 
-using std::string;
-using std::vector;
-using std::ifstream;
-using std::domain_error;
-using std::cin;
-
+using namespace std;
 /***
     Args:
         min (int): left margin of a range
@@ -28,7 +23,7 @@ vector<string> readWordListFromFile(const string& filePath)
         throw domain_error("Unable to open file");
     }
 
-    //while ( getline (wordFile, word) ){  // Thong thuong doc tung line. 
+    //while ( getline (wordFile, word) ){  // Thong thuong doc tung line.
                                            // Chuong trinh nay cung chay.
     while (wordFile >> word) {  // Nhung voi chuong trinh nay, doc tung word cung duoc
                                 // Tuc ca 2 cach doc deu chay.
@@ -60,11 +55,11 @@ bool isCharInWord(const char ch, const string& word)
     Returns:
         answer (string) : the lowercase word is in the position index of wordList
 ***/
-string chooseWordFromList(const vector<string>& wordList, int index) 
+string chooseWordFromList(const vector<string>& wordList, int index)
 {
     // TODO: Return a lowercase word in the index position of the vector wordList.
     string answer;
-    answer = wordList[i];
+    answer = wordList[index];
     return answer;
 }
 
@@ -84,7 +79,7 @@ string generateHiddenCharacters(string answerWord){
 char getInputCharacter() {
     char ch;
     cin >> ch;
-    return tolower(ch); 
+    return tolower(ch);
 }
 
 /***
@@ -144,9 +139,9 @@ bool contains(const string word, char Guess)
 {
     return (word.find_first_of(Guess) != string::npos);
 }
-void processData(const char ch, const string& word, 
-                string& secretWord, 
-                string& correctChars, 
+void processData(const char ch, const string& word,
+                string& secretWord,
+                string& correctChars,
                 int& incorrectGuess, string& incorrectChars)
 {
     if(contains(word, ch)){
@@ -157,7 +152,7 @@ void processData(const char ch, const string& word,
             updateIncorrectGuess( incorrectGuess);
             updateEnteredChars(ch, incorrectChars);
     }
-            
+
     /*** TODO
         If ch in word:
             update secretWord: call updateSecretWord() function
