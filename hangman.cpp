@@ -17,7 +17,7 @@ using std::cin;
 int generateRandomNumber(const int min, const int max)
 {
     
-    return rand() % (max - min + 1) + min
+    return rand() % (max - min + 1) + min;
 }
 
 vector<string> readWordListFromFile(const string& filePath)
@@ -82,7 +82,7 @@ string chooseWordFromList(const vector<string>& wordList, int index)
 ***/
 string generateHiddenCharacters(string answerWord){
     // TODO: Based on answerWord's length, generate hidden characters in form of "---"
-    string secretWord = (answerWord.size(), '-') ;
+    string secretWord = string(answerWord.size(), '-') ;
 
     return secretWord;
 }
