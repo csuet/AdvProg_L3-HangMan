@@ -48,9 +48,9 @@ int verifyUpdateIncorrectGuess(int incorrectGuess) {
     return incorrectGuess;
 }
 
-bool verifyProcessData(const char ch, const string& word, 
-                string& secretWord, 
-                string& correctChars, 
+bool verifyProcessData(const char ch, const string& word,
+                string& secretWord,
+                string& correctChars,
                 int& incorrectGuess, string& incorrectChars){
     string preCorrectChars = correctChars;
     string preSecretWord = secretWord;
@@ -107,35 +107,35 @@ class Test : public CPPUNIT_NS::TestCase
       void testGenerateRandomNumber(void) {
         const int testSize = 5;
         std::string sharedName = "\n[checkGenerateRandomNumber test] ";
-        TestStruct checkGenerateRandomNumber[testSize]  = 
+        TestStruct checkGenerateRandomNumber[testSize]  =
         {
             {
-                sharedName + "test normal 1", 
-                verifyGenerateRandomNumber(0, 10), 
+                sharedName + "test normal 1",
+                verifyGenerateRandomNumber(0, 10),
                 true,
                 "Should return an integer number between 0 and 10\n"
             },
             {
-                sharedName + "test normal 2", 
-                verifyGenerateRandomNumber(15, 50), 
+                sharedName + "test normal 2",
+                verifyGenerateRandomNumber(15, 50),
                 true,
                 "Should return an integer number between 15 and 50\n"
             },
             {
-                sharedName + "test normal 3", 
-                verifyGenerateRandomNumber(1, 100), 
+                sharedName + "test normal 3",
+                verifyGenerateRandomNumber(1, 100),
                 true,
                 "Should return an integer number between 1 and 100\n"
             },
             {
-                sharedName + "test normal 4", 
-                verifyGenerateRandomNumber(1003, 2022), 
+                sharedName + "test normal 4",
+                verifyGenerateRandomNumber(1003, 2022),
                 true,
                 "Should return an integer number between 1003 and 2022\n"
             },
             {
-                sharedName + "test normal 5", 
-                verifyGenerateRandomNumber(10, 10), 
+                sharedName + "test normal 5",
+                verifyGenerateRandomNumber(10, 10),
                 true,
                 "Should return an integer number between 10 and 10\n"
             },
@@ -146,35 +146,35 @@ class Test : public CPPUNIT_NS::TestCase
       void testIsCharInWord(void) {
         const int testSize = 5;
         std::string sharedName = "\n[checkIsCharInWord test] ";
-        TestStruct checkIsCharInWord[testSize]  = 
+        TestStruct checkIsCharInWord[testSize]  =
         {
             {
-                sharedName + "test normal 1", 
-                verifyIsCharInWord('a', "dad"), 
+                sharedName + "test normal 1",
+                verifyIsCharInWord('a', "dad"),
                 true,
                 "Character 'a' exists in word dad. Should return true\n"
             },
             {
-                sharedName + "test normal 2", 
-                verifyIsCharInWord('a', "mom"), 
+                sharedName + "test normal 2",
+                verifyIsCharInWord('a', "mom"),
                 false,
                 "Character 'a' doesn't exist in word mom. Should return false\n"
             },
             {
-                sharedName + "test normal 3", 
-                verifyIsCharInWord('g', "strange"), 
+                sharedName + "test normal 3",
+                verifyIsCharInWord('g', "strange"),
                 true,
                 "Character 'g' exists in word strange. Should return true\n"
             },
             {
-                sharedName + "test normal 4", 
-                verifyIsCharInWord('m', "mommy"), 
+                sharedName + "test normal 4",
+                verifyIsCharInWord('m', "mommy"),
                 true,
                 "Character 'm' exists in word mommy. Should return true\n"
             },
             {
-                sharedName + "test normal 5", 
-                verifyIsCharInWord('b', "animal"), 
+                sharedName + "test normal 5",
+                verifyIsCharInWord('b', "animal"),
                 false,
                 "Character 'b' doesn't exist in word animal. Should return false\n"
             },
@@ -191,35 +191,35 @@ class Test : public CPPUNIT_NS::TestCase
         wordList.push_back("Mother");
         wordList.push_back("FAMILY");
         std::string sharedName = "\n[checkChooseWordFromList test] ";
-        TestStruct checkChooseWordFromList[testSize]  = 
+        TestStruct checkChooseWordFromList[testSize]  =
         {
             {
-                sharedName + "test normal 1", 
-                verifyChooseWordFromList(wordList, 1, "dad"), 
+                sharedName + "test normal 1",
+                verifyChooseWordFromList(wordList, 1, "dad"),
                 true,
                 "Word 'dad' is in index 1 in the list. Should return dad\n"
             },
             {
-                sharedName + "test normal 2", 
-                verifyChooseWordFromList(wordList, 0, "mom"), 
+                sharedName + "test normal 2",
+                verifyChooseWordFromList(wordList, 0, "mom"),
                 true,
                 "Word 'mom' is in index 0 in the list. Should return mom\n"
             },
             {
-                sharedName + "test normal 3", 
-                verifyChooseWordFromList(wordList, 4, "family"), 
+                sharedName + "test normal 3",
+                verifyChooseWordFromList(wordList, 4, "family"),
                 true,
                 "Word 'family' is in index 4 in the list. Should return family\n"
             },
             {
-                sharedName + "test normal 4", 
-                verifyChooseWordFromList(wordList, 3, "mother"), 
+                sharedName + "test normal 4",
+                verifyChooseWordFromList(wordList, 3, "mother"),
                 true,
                 "Word 'mother' is in index 3 in the list. Should return mother\n"
             },
             {
-                sharedName + "test normal 5", 
-                verifyChooseWordFromList(wordList, 2, "father"), 
+                sharedName + "test normal 5",
+                verifyChooseWordFromList(wordList, 2, "father"),
                 true,
                 "Word 'father' is in index 2 in the list. Should return father\n"
             },
@@ -230,35 +230,35 @@ class Test : public CPPUNIT_NS::TestCase
       void testUpdateSecretWord(void) {
         const int testSize = 5;
         std::string sharedName = "\n[checkUpdateSecretWord test] ";
-        TestStruct checkUpdateSecretWord[testSize]  = 
+        TestStruct checkUpdateSecretWord[testSize]  =
         {
             {
-                sharedName + "test normal 1", 
-                verifyUpdateSecretWord("-", 'a', "a", "a"), 
+                sharedName + "test normal 1",
+                verifyUpdateSecretWord("-", 'a', "a", "a"),
                 true,
                 "Character 'a' exist in secret word. Should return string 'a'."
             },
             {
-                sharedName + "test normal 2", 
-                verifyUpdateSecretWord("--t", 'c', "cat", "c-t"), 
+                sharedName + "test normal 2",
+                verifyUpdateSecretWord("--t", 'c', "cat", "c-t"),
                 true,
                 "Character 'c' exist in secret word. Should return string 'c-t'."
             },
             {
-                sharedName + "test normal 3", 
-                verifyUpdateSecretWord("ca---ag-", 'r', "carriage", "carr-ag-"), 
+                sharedName + "test normal 3",
+                verifyUpdateSecretWord("ca---ag-", 'r', "carriage", "carr-ag-"),
                 true,
                 "Character 'r' exist in secret word. Should return string 'carr-ag-'."
             },
             {
-                sharedName + "test normal 4", 
-                verifyUpdateSecretWord("s-iss--s", 's', "scissors", "s-iss--s"), 
+                sharedName + "test normal 4",
+                verifyUpdateSecretWord("s-iss--s", 's', "scissors", "s-iss--s"),
                 true,
                 "Character 's' existed in secret word. Should return string 's-iss--s'."
             },
             {
-                sharedName + "test normal 5", 
-                verifyUpdateSecretWord("circumsta-ce", 'n', "circumstance", "circumstance"), 
+                sharedName + "test normal 5",
+                verifyUpdateSecretWord("circumsta-ce", 'n', "circumstance", "circumstance"),
                 true,
                 "Character 'n' exist in secret word. Should return string 'circumstance'."
             },
@@ -269,35 +269,35 @@ class Test : public CPPUNIT_NS::TestCase
     void testUpdateEnteredChars(void) {
         const int testSize = 5;
         std::string sharedName = "\n[checkUpdateEnteredChars test] ";
-        TestStruct checkUpdateEnteredChars[testSize]  = 
+        TestStruct checkUpdateEnteredChars[testSize]  =
         {
           {
-              sharedName + "test normal 1", 
-              verifyUpdateEnteredChars('a', "s ", "s a "), 
+              sharedName + "test normal 1",
+              verifyUpdateEnteredChars('a', "s ", "s a "),
             true,
             "Character 'a' is correct character. Should return string 's a '."
         },
         {
-            sharedName + "test normal 2", 
-            verifyUpdateEnteredChars('a', "a ", "a a "), 
+            sharedName + "test normal 2",
+            verifyUpdateEnteredChars('a', "a ", "a a "),
             true,
             "Character 'a' is correct character. Should return string 'a a '."
         },
         {
-            sharedName + "test normal 3", 
-            verifyUpdateEnteredChars('r', "c a i a g e ", "c a i a g e r "), 
+            sharedName + "test normal 3",
+            verifyUpdateEnteredChars('r', "c a i a g e ", "c a i a g e r "),
             true,
             "Character 'r' is correct character. Should return string 'c a i a g e r '."
         },
         {
-            sharedName + "test normal 4", 
-            verifyUpdateEnteredChars('o', "s c i ", "s c i o "), 
+            sharedName + "test normal 4",
+            verifyUpdateEnteredChars('o', "s c i ", "s c i o "),
             true,
             "Character 'o' is correct character. Should return string 's c i o '."
         },
         {
-            sharedName + "test normal 5", 
-            verifyUpdateEnteredChars('n', "", "n "), 
+            sharedName + "test normal 5",
+            verifyUpdateEnteredChars('n', "", "n "),
             true,
             "Character 'n' is correct character. Should return string 'n '."
         },
@@ -314,10 +314,10 @@ class Test : public CPPUNIT_NS::TestCase
             int youGot = verifyUpdateIncorrectGuess(incorrectGuess);
             int expected = incorrectGuess+1;
             if (youGot == expected){
-                std::cout << sharedName << " test normal 1: "<< "PASSED!"<< std::endl; 
+                std::cout << sharedName << " test normal 1: "<< "PASSED!"<< std::endl;
             }else{
                 std::cout << sharedName << " test normal 1: "<< "FAILED!"<< std::endl;
-                std::cout << "The current mistake is "<< incorrectGuess<< "! Got: " << youGot << ", Expected: "<< expected << " !"; 
+                std::cout << "The current mistake is "<< incorrectGuess<< "! Got: " << youGot << ", Expected: "<< expected << " !";
                 exit(1);
             }
         }
@@ -331,35 +331,35 @@ class Test : public CPPUNIT_NS::TestCase
         string correctChars = "";
         string incorrectChars = "";
         int incorrectGuess = 0;
-        TestStruct checkProcessData[testSize]  = 
+        TestStruct checkProcessData[testSize]  =
         {
             {
-                sharedName + "test normal 1", 
-                verifyProcessData('a', word, secretWord, correctChars, incorrectGuess, incorrectChars), 
+                sharedName + "test normal 1",
+                verifyProcessData('a', word, secretWord, correctChars, incorrectGuess, incorrectChars),
                 true,
                 "Character 'a' exists in word strange. secretWord and correctChars should be updated\n"
             },
             {
-                sharedName + "test normal 2", 
-                verifyProcessData('b', word, secretWord, correctChars, incorrectGuess, incorrectChars), 
+                sharedName + "test normal 2",
+                verifyProcessData('b', word, secretWord, correctChars, incorrectGuess, incorrectChars),
                 true,
                 "Character 'b' doesn't exist in word strange. incorrectGuess and incorrectChars should be updated\n"
             },
             {
-                sharedName + "test normal 3", 
-                verifyProcessData('k', word, secretWord, correctChars, incorrectGuess, incorrectChars), 
+                sharedName + "test normal 3",
+                verifyProcessData('k', word, secretWord, correctChars, incorrectGuess, incorrectChars),
                 true,
                 "Character 'k' doesn't exists in word strange. incorrectGuess and incorrectChars should be updated\n"
             },
             {
-                sharedName + "test normal 4", 
-                verifyProcessData('e', word, secretWord, correctChars, incorrectGuess, incorrectChars), 
+                sharedName + "test normal 4",
+                verifyProcessData('e', word, secretWord, correctChars, incorrectGuess, incorrectChars),
                 true,
                 "Character 'e' exists in word strange. secretWord and correctChars should be updated\n"
             },
             {
-                sharedName + "test normal 5", 
-                verifyProcessData('t', word, secretWord, correctChars, incorrectGuess, incorrectChars), 
+                sharedName + "test normal 5",
+                verifyProcessData('t', word, secretWord, correctChars, incorrectGuess, incorrectChars),
                 true,
                 "Character 't' exists in word strange. secretWord and correctChars should be updated\n"
             },
@@ -370,47 +370,47 @@ class Test : public CPPUNIT_NS::TestCase
     void testGenerateHiddenCharacters(void) {
         const int testSize = 5;
         std::string sharedName = "\n[checkGenerateHiddenCharacters test] ";
-        TestStruct checkGenerateHiddenCharacters[testSize]  = 
+        TestStruct checkGenerateHiddenCharacters[testSize]  =
         {
             {
-                sharedName + "test normal 1", 
-                verifyGenerateHiddenCharacters("a", "-"), 
+                sharedName + "test normal 1",
+                verifyGenerateHiddenCharacters("a", "-"),
                 true,
                 "Secret Word is 'a'. Should return string '-'."
             },
             {
-                sharedName + "test normal 2", 
-                verifyGenerateHiddenCharacters("cat", "---"), 
+                sharedName + "test normal 2",
+                verifyGenerateHiddenCharacters("cat", "---"),
                 true,
                 "Secret Word is 'cat'. Should return string '---'."
             },
             {
-                sharedName + "test normal 3", 
-                verifyGenerateHiddenCharacters("carriage", "--------"), 
+                sharedName + "test normal 3",
+                verifyGenerateHiddenCharacters("carriage", "--------"),
                 true,
                 "Secret Word is 'carriage'. Should return string '--------'."
             },
             {
-                sharedName + "test normal 4", 
-                verifyGenerateHiddenCharacters("scissors", "--------"), 
+                sharedName + "test normal 4",
+                verifyGenerateHiddenCharacters("scissors", "--------"),
                 true,
                 "Secret Word is 'scissors'. Should return string '--------'."
             },
             {
-                sharedName + "test normal 5", 
-                verifyGenerateHiddenCharacters("circumstance", "------------"), 
+                sharedName + "test normal 5",
+                verifyGenerateHiddenCharacters("circumstance", "------------"),
                 true,
                 "Secret Word is 'circumstance'. Should return string '------------'."
             },
         };
         runTestLoop(checkGenerateHiddenCharacters, testSize);
-    }   
+    }
 
     void successTestExit(void) {
         std::cout << "all tests passed! \n";
         exit(0);
-    }   
-};  
+    }
+};
 
 
 CPPUNIT_TEST_SUITE_REGISTRATION(Test);
