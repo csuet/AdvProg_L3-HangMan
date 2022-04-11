@@ -34,6 +34,7 @@ vector<string> readWordListFromFile(const string& filePath)
     while (wordFile >> word) {  // Nhung voi chuong trinh nay, doc tung word cung duoc
                                 // Tuc ca 2 cach doc deu chay.
         wordList.push_back(word);
+        
         //cout << word << '\n';
     }
     wordFile.close();
