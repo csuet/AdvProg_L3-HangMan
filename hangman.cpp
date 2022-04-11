@@ -52,10 +52,8 @@ vector<string> readWordListFromFile(const string &filePath)
 ***/
 bool isCharInWord(const char ch, const string &word)
 {
-    if (word.find(ch) != string::npos)
-        return true;
-    else
-        return false;
+   if( word.find_first_of(ch) != -1) return true;
+   else return false ;
 }
 
 /***
