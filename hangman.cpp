@@ -59,28 +59,7 @@ int main(int argc, char const *argv[])
 	return 0;
 }
 
-void drawHangman(int misTake){
-	//cout<<misTake;
-	cout<<"-------- \n";
-	cout<<"|     ";
-	if (misTake >=0) cout<<"|";
-	cout<<"\n";
-	cout<<"|     ";
-	if (misTake >=1)
-	cout<<"O"; cout<<"\n";
-	cout<<"|    ";
-    if (misTake >=2) cout<<"/";
-    if (misTake >=3)
-    cout<<"|";
-    if (misTake >=4) cout<<"\\";
-    cout<<"\n";
-	cout<<"|    ";
-	if (misTake >=5) cout<<"/ ";
-    if (misTake >=6) cout<<"\\";
-    cout<<"\n";
-    cout<<"| \n";
-	cout<<"^^^^^^";
-}
+
 
 void guessPlay(string secretWord){
      cout<<secretWord;
