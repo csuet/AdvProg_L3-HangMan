@@ -151,14 +151,6 @@ void processData(const char ch, const string& word,
                 string& correctChars, 
                 int& incorrectGuess, string& incorrectChars)
 {
-    /*** TODO
-        If ch in word:
-            update secretWord: call updateSecretWord() function
-            update correctChars: call updateEnteredChars() function
-        else:
-            update incorrectGuess: call updateIncorrectGuess() function
-            update incorrectChars: call updateEnteredChars() function
-    ***/
      if (isCharInWord(ch, word)) {
         updateSecretWord(secretWord, ch, word);
         updateEnteredChars(ch, correctChars);
