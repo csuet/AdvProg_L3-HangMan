@@ -128,8 +128,7 @@ void updateEnteredChars( const char ch, string &chars )
 {
     // TODO: append the character ch is in end of the text chars
     if ( chars.find(ch) != string::npos )
-        chars += ch;
-    chars += ' ';
+        chars = chars + ch + " ";
 }
 
 /***
