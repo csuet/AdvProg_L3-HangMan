@@ -1,4 +1,4 @@
-Ng?c Bùi
+
 #include <iostream>
 #include "hangman.h"
 #include <stdlib.h>
