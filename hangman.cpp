@@ -83,6 +83,7 @@ string generateHiddenCharacters(string answerWord){
 }
 
 char getInputCharacter() {
+    char alo;
     char ch;
     cin >> ch;
     return tolower(ch); 
