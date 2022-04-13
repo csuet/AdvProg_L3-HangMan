@@ -72,7 +72,7 @@ string chooseWordFromList(const vector<string>& wordList, int index)
 {
     // TODO: Return a lowercase word in the index position of the vector wordList.
     string answer;
-    answer=wordList[index];
+    answer=tolower(wordList[index]);
     return answer;
 }
 
@@ -85,7 +85,7 @@ string chooseWordFromList(const vector<string>& wordList, int index)
 string generateHiddenCharacters(string answerWord){
     // TODO: Based on answerWord's length, generate hidden characters in form of "---"
     string secretWord;
-    secretWord=string(answerWord.size(),'_');
+    secretWord=string(answerWord.size(),'-');
     return secretWord;
 }
 
@@ -120,7 +120,7 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
 ***/
 void updateEnteredChars(const char ch, string& chars){
     // TODO: append the character ch is in end of the text chars
-    chars+=ch;
+    chars+=ch+" ";
 }
 
 /***
