@@ -18,7 +18,7 @@ int generateRandomNumber(const int min, const int max)
 {
     // TODO: Return a random integer number between min and max
    // srand(time(0));
-    return rand()%(max-min+1)+min;
+    return (rand()%(max-min+1)+min);
 }
 
 vector<string> readWordListFromFile(const string& filePath)
@@ -106,7 +106,7 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
 {
     // TODO: Update the secret word if the character ch is in the answer word.
     for(int i=0;i<secretWord.size();i++){
-         if(ch == word[i]){
+         if(word[i]==ch ){
             secretWord[i]=ch;
         }
     }
@@ -123,7 +123,7 @@ void updateEnteredChars(const char ch, string& chars){
     // TODO: append the character ch is in end of the text chars
 
     
-    chars= chars + ch+' '; 
+    chars= chars + ch+" "; 
 }
 
 /***
