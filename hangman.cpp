@@ -16,7 +16,11 @@ using std::cin;
 ***/
 int generateRandomNumber(const int min, const int max)
 {
-     return rand() % (max - min + 1) + min;
+     int random;
+    if (max == min) return max;
+        int temp = max - min;
+    random = rand() % temp + min;
+    return random;
 }
 
 vector<string> readWordListFromFile(const string& filePath)
@@ -50,12 +54,11 @@ vector<string> readWordListFromFile(const string& filePath)
 bool isCharInWord(const char ch, const string& word)
 {
     // TODO: return true if ch is in word else return false
-     for (int i = 0; i < word.size(); i++) {
-        if (ch != word[i]) {
-            return false;
-        }
+       for (int i=0; i<word.length(); i++){
+        if (word[i] == ch)
+            return true;
     }
-    return true;
+    return false;
 }
 
 /***
@@ -68,8 +71,10 @@ bool isCharInWord(const char ch, const string& word)
 string chooseWordFromList(const vector<string>& wordList, int index) 
 {
     // TODO: Return a lowercase word in the index position of the vector wordList.
-    string answer;
-    answer = wordList[index-1];
+    string temp;
+    temp = wordList[index];
+    string answer = temp;
+    std::transform(temp.begin(), temp.end(), answer.begin(), ::tolower);
     return answer;
 }
 
@@ -81,10 +86,8 @@ string chooseWordFromList(const vector<string>& wordList, int index)
 ***/
 string generateHiddenCharacters(string answerWord){
     // TODO: Based on answerWord's length, generate hidden characters in form of "---"
-    string secretWord = "";
-    for (int i = 0; i < answerWord.size(); i++) {
-        secretWord += '-';
-    }
+    string secretWord;
+    secretWord = string(answerWord.length(), '-');
     return secretWord;
 }
 
@@ -104,12 +107,9 @@ char getInputCharacter() {
 ***/
 void updateSecretWord(string& secretWord, const char ch, const string& word)
 {
-    if (isCharInWord(ch, word)) {
-        for (int i = 0; i < word.size(); i++) {
-            if (ch == word[i]) {
-                secretWord[i] = ch;
-            }
-        }
+   for (int i=0; i<word.length(); i++){
+        if (word[i] == ch) 
+            secretWord[i] = ch;
     }
 }
 
@@ -121,8 +121,7 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
         void
 ***/
 void updateEnteredChars(const char ch, string& chars){
-    chars = chars + ch;
-    chars = chars + ' ';
+     chars = chars + ch + " ";
 }
 
 /***
@@ -151,10 +150,11 @@ void processData(const char ch, const string& word,
                 string& correctChars, 
                 int& incorrectGuess, string& incorrectChars)
 {
-     if (isCharInWord(ch, word)) {
+    if (isCharInWord(ch, word)) {
         updateSecretWord(secretWord, ch, word);
         updateEnteredChars(ch, correctChars);
-    } else {
+    } 
+    else {
         updateIncorrectGuess(incorrectGuess);
         updateEnteredChars(ch, incorrectChars);
     }
