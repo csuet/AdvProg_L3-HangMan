@@ -112,7 +112,7 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
         for (int i = 0; i < word.size(); i++) {
             if (word[i] == ch) pos = i;
         }
-        secretWord[pos] == ch;
+        secretWord[pos] = ch;
     } 
 }
 
