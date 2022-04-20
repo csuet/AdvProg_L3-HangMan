@@ -14,13 +14,13 @@ using std::cin;
     Returns:
         number (int) : random number in range [min; max]
 ***/
-int generateRandomNumber(const int min, const int max)
+int generateRandomNumber(const int min, const int max) //oke
 {
     // TODO: Return a random integer number between min and max
-    return 1;
+    return min + rand() % (max + 1 - min);
 }
 
-vector<string> readWordListFromFile(const string& filePath)
+vector<string> readWordListFromFile(const string& filePath) //oke
 {
     vector<string> wordList;
     string word;
@@ -48,10 +48,17 @@ vector<string> readWordListFromFile(const string& filePath)
     Returns:
         result (bool) : the character ch is in the word or not.
 ***/
-bool isCharInWord(const char ch, const string& word)
+bool isCharInWord(const char ch, const string& word) //oke
 {
     // TODO: return true if ch is in word else return false
-    return true;
+    bool check = false;
+    for (int i = 0; i < word.size(); i++) {
+        if (word[i] == ch) {
+            check = true;
+            break;
+        }
+    }
+    return check;
 }
 
 /***
@@ -61,11 +68,13 @@ bool isCharInWord(const char ch, const string& word)
     Returns:
         answer (string) : the lowercase word is in the position index of wordList
 ***/
-string chooseWordFromList(const vector<string>& wordList, int index) 
+string chooseWordFromList(const vector<string>& wordList, int index) //oke
 {
     // TODO: Return a lowercase word in the index position of the vector wordList.
-    string answer;
-
+    string answer = wordList[index];
+    for (int i = 0; i < answer.size(); i++) {
+        if (answer[i] >= 'A' && answer[i] <= 'Z') answer[i] += 32;
+    }
     return answer;
 }
 
@@ -75,10 +84,13 @@ string chooseWordFromList(const vector<string>& wordList, int index)
     Returns:
         secretWord (string): answerWord in hidden form (form of ---)
 ***/
-string generateHiddenCharacters(string answerWord){
+string generateHiddenCharacters(string answerWord)
+{
     // TODO: Based on answerWord's length, generate hidden characters in form of "---"
-    string secretWord;
-
+    string secretWord = answerWord;
+    for (int i = 0; i < answerWord.size(); i++) {
+        secretWord[i] = '-';
+    }
     return secretWord;
 }
 
@@ -99,6 +111,9 @@ char getInputCharacter() {
 void updateSecretWord(string& secretWord, const char ch, const string& word)
 {
     // TODO: Update the secret word if the character ch is in the answer word.
+        for (int i = 0; i < word.size(); i++) {
+            if (word[i] == ch) secretWord[i] = ch;
+        }  
 }
 
 /***
@@ -110,6 +125,7 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
 ***/
 void updateEnteredChars(const char ch, string& chars){
     // TODO: append the character ch is in end of the text chars
+    chars = chars + ch + ' ';
 }
 
 /***
@@ -120,6 +136,7 @@ void updateEnteredChars(const char ch, string& chars){
 ***/
 void updateIncorrectGuess(int& incorrectGuess){
     // TODO: increase the value of incorrectGuess by 1
+    incorrectGuess++;
 }
 
 /***
@@ -146,5 +163,11 @@ void processData(const char ch, const string& word,
             update incorrectGuess: call updateIncorrectGuess() function
             update incorrectChars: call updateEnteredChars() function
     ***/
+   if (isCharInWord(ch, word)) {
+       updateSecretWord(secretWord, ch, word);
+       updateEnteredChars(ch, correctChars);
+   } else {
+       updateIncorrectGuess(incorrectGuess);
+       updateEnteredChars(ch, incorrectChars);
+   }
 }
-
