@@ -165,11 +165,11 @@ void processData(const char ch, const string& word,
         }
     if (flag) {
         updateSecretWord(secretWord, ch, word);
-        updateEnteredChars(ch, secretWord);
+        updateEnteredChars(ch, incorrectChars);
     }
     else {
         updateIncorrectGuess(incorrectGuess);
-        updateEnteredChars(ch, secretWord);
+        updateEnteredChars(ch, incorrectChars);
     }
 }
 
