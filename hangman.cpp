@@ -68,7 +68,9 @@ string chooseWordFromList(const vector<string>& wordList, int index)
 {
     // TODO: Return a lowercase word in the index position of the vector wordList.
     string answer;
-    answer=tolower(wordList[index]);
+    answer=wordList[index];
+    for(int i=0;i<=answer.length();i++)
+       answer[i]=tolower(answer[i]);
     return answer;
 }
 
@@ -104,8 +106,8 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
 {
     for(int i=secretWord.length()-1;i>=0;i--)
     {
-    if(secretWord[i]==ch)
-         word[i]=ch;
+    if(ch==word[i])
+         secretWord[i]=ch;
     }
     // TODO: Update the secret word if the character ch is in the answer word.
 }
