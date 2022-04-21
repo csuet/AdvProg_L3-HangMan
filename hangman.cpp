@@ -18,8 +18,8 @@ int generateRandomNumber(const int min, const int max)
 {
     // TODO: Return a random integer number between min and max
     int r;
-    r = rand()%(max-min) + min;
-    return 1;
+    r = rand()%(max+min) + min;
+    return r;
 }
 
 vector<string> readWordListFromFile(const string& filePath)
