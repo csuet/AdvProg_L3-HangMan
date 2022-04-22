@@ -53,12 +53,7 @@ vector<string> readWordListFromFile(const string& filePath)
 ***/
 bool isCharInWord(const char ch, const string& word)
 {
-    bool found = word.find(ch);
-    if (found != string::npos)
-    {
-        return true;
-    }
-    else return false;
+    return word.find(ch) != string::npos;
 }
 
 /***
@@ -111,8 +106,8 @@ char getInputCharacter() {
 void updateSecretWord(string& secretWord, const char ch, const string& word)
 {
     // TODO: Update the secret word if the character ch is in the answer word.
-    if (isCharInWord(ch, word) == true)
-    {
+    // if (isCharInWord(ch, word) == true)
+    // {
         for (int i = 0; i < secretWord.length(); i++)
         {
             if (word[i] == ch)
@@ -120,7 +115,7 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
                 secretWord[i] = ch;
             }
         }
-    }
+    // }
 }
 
 /***
