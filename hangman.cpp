@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cctype>
 #include "hangman.h"
 
 using std::string;
@@ -17,7 +18,7 @@ using std::cin;
 int generateRandomNumber(const int min, const int max)
 {
     // TODO: Return a random integer number between min and max
-    return rand() % (max - min + 1) + min;
+    return rand() % (max - min + 1);
 }
 
 vector<string> readWordListFromFile(const string& filePath)
@@ -33,7 +34,6 @@ vector<string> readWordListFromFile(const string& filePath)
                                            // Chuong trinh nay cung chay.
     while (wordFile >> word) {  // Nhung voi chuong trinh nay, doc tung word cung duoc
                                 // Tuc ca 2 cach doc deu chay.
-        wordFile >> word;
         wordList.push_back(word);
         //cout << word << '\n';
     }
@@ -52,12 +52,10 @@ vector<string> readWordListFromFile(const string& filePath)
 bool isCharInWord(const char ch, const string& word)
 {
     // TODO: return true if ch is in word else return false
-    for (int i = 0; i < word.size(); ++i) {
-        if (ch == word[i]) {
-            return true;
-        }
+    if (word.find(ch) == string::npos) {
+        return false;
     }
-    return false;
+    return true;
 }
 
 /***
@@ -71,7 +69,10 @@ string chooseWordFromList(const vector<string>& wordList, int index)
 {
     // TODO: Return a lowercase word in the index position of the vector wordList.
     string answer;
-    answer = tolower(wordList[index]);
+    answer = wordList[index];
+    for (int i = 0; i < answer.size(); ++i) {
+        answer[i] = tolower(answer[i]);
+    }
     return answer;
 }
 
@@ -119,7 +120,7 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
 ***/
 void updateEnteredChars(const char ch, string& chars) {
     // TODO: append the character ch is in end of the text chars
-    chars += ch;
+    chars += ch + ' ';
 }
 
 /***
@@ -167,4 +168,3 @@ void processData(const char ch, const string& word,
     }
 }
 
- 
