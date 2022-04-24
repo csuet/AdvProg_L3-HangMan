@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cctype>
 #include "hangman.h"
 
 using std::string;
