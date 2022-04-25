@@ -161,11 +161,11 @@ void processData(const char ch, const string& word,
 {
     if (isCharInWord(ch,word)){
         updateSecretWord();
-        updateEnteredChars();
+        updateEnteredChars(ch,correctChars);
     }
     else {
         updateIncorrectGuess();
-        updateEnteredChars();
+        updateEnteredChars(ch,incorrectChars);
     }
     /*** TODO
         If ch in word:
