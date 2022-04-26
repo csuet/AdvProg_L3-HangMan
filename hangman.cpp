@@ -81,7 +81,7 @@ string chooseWordFromList(const vector<string> &wordList, int index)
         if (answer[i] >= 'A' && answer[i] <= 'Z')
             answer[i] += 32;
     }
-    return;
+    return answer;
 }
 
 /***
