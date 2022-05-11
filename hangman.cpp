@@ -1,6 +1,7 @@
 #include <iostream>
 #include "hangman.h"
-
+#include <cstdlib>
+#include <ctime>
 using std::string;
 using std::vector;
 using std::ifstream;
