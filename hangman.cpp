@@ -82,7 +82,8 @@ string chooseWordFromList(const vector<string>& wordList, int index)
 ***/
 string generateHiddenCharacters(string answerWord){
     // TODO: Based on answerWord's length, generate hidden characters in form of "---"
-    string secretWord = string(answerWord.length(), '-');
+    string secretWord = answerWord;
+    for ( int i = 0; i < answerWord.size();i++) secretWord[i]='-';
     return secretWord;
 }
 
@@ -103,7 +104,7 @@ char getInputCharacter() {
 void updateSecretWord(string& secretWord, const char ch, const string& word)
 {
     // TODO: Update the secret word if the character ch is in the answer word.
-    for (int i = 0; i < word.length(); i++) {
+    for (int i = 0; i < word.size(); i++) {
         if (word[i] == ch) {
             secretWord[i] = ch;
         }
@@ -119,7 +120,7 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
 ***/
 void updateEnteredChars(const char ch, string& chars){
     // TODO: append the character ch is in end of the text chars
-    chars = chars + ch;
+    chars = chars + ch + ' ';
 }
 
 /***
@@ -165,4 +166,3 @@ void processData(const char ch, const string& word,
         updateEnteredChars(ch, incorrectChars);
     }
 }
-
